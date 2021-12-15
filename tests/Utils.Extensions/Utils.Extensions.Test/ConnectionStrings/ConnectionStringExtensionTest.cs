@@ -10,7 +10,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
 
         public ConnectionStringExtensionTest()
         {
-            connectionString = "Data Source=server-address; initial catalog=database-name; user id=user-id; password=password-secret; Integrated Security=False;"; ;
+            connectionString = "Data Source=server-address; initial catalog=database-name; user id=user-id; password=password-secret; Integrated Security=False;";
         }
 
         [Fact]
