@@ -14,24 +14,6 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
-        public void Should_Return_Values_Of_Connection_String()
-        {
-            var server = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Source=");
-            var database = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Catalog=");
-            var user = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Id=");
-            var password = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Password=");
-
-            server.Should().NotBeNullOrEmpty();
-            server.Should().Contain("server-address");
-            database.Should().NotBeNullOrEmpty();
-            database.Should().Contain("database-name");
-            user.Should().NotBeNullOrEmpty();
-            user.Should().Contain("user-id");
-            password.Should().NotBeNullOrEmpty();
-            password.Should().Contain("password-secret");
-        }
-
-        [Fact]
         public void Should_Return_Value_Of_Server_From_Connection_String()
         {
             var server = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Source=");
@@ -72,6 +54,36 @@ namespace Utils.Extensions.Test.ConnectionStrings
         {
             var password = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Password=");
 
+            password.Should().NotBeNullOrEmpty();
+            password.Should().Contain("-");
+            password.Should().Contain("password");
+            password.Should().Contain("secret");
+            password.Should().Contain("password-secret");
+        }
+
+        [Fact]
+        public void Should_Return_Values_Of_Connection_String()
+        {
+            var server = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Source=");
+            var database = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Catalog=");
+            var user = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Id=");
+            var password = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Password=");
+
+            server.Should().NotBeNullOrEmpty();
+            server.Should().Contain("-");
+            server.Should().Contain("server");
+            server.Should().Contain("address");
+            server.Should().Contain("server-address");
+            database.Should().NotBeNullOrEmpty();
+            database.Should().Contain("-");
+            database.Should().Contain("database");
+            database.Should().Contain("name");
+            database.Should().Contain("database-name");
+            user.Should().NotBeNullOrEmpty();
+            user.Should().Contain("-");
+            user.Should().Contain("user");
+            user.Should().Contain("id");
+            user.Should().Contain("user-id");
             password.Should().NotBeNullOrEmpty();
             password.Should().Contain("-");
             password.Should().Contain("password");
