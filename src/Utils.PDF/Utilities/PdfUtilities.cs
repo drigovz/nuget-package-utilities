@@ -12,17 +12,17 @@ namespace Utils.PDF.Utilities
         public byte[] ConvertPDFtoByteArray(Stream html)
         {
             byte[] buffer;
-            using (MemoryStream memStream = new MemoryStream())
+            using (MemoryStream memStream = new())
             {
-                WriterProperties wp = new WriterProperties();
-                using (PdfWriter writer = new PdfWriter(memStream, wp))
+                WriterProperties wp = new();
+                using (PdfWriter writer = new(memStream, wp))
                 {
                     writer.SetCloseStream(true);
 
                     PdfDocument document;
                     using (document = new PdfDocument(writer))
                     {
-                        ConverterProperties props = new ConverterProperties();
+                        ConverterProperties props = new();
 
                         document.SetDefaultPageSize(PageSize.LETTER);
                         document.SetCloseWriter(true);
@@ -33,7 +33,7 @@ namespace Utils.PDF.Utilities
                         document.Close();
                     }
                 }
-
+                
                 buffer = memStream.ToArray();
             }
 
