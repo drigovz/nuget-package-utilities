@@ -1,14 +1,14 @@
 ﻿using Xunit;
-using Utils.Extensions.ConnectionStrings;
 using FluentAssertions;
+using Utils.Utilities.ConnectionStrings;
 
 namespace Utils.Extensions.Test.ConnectionStrings
 {
-    public class ConnectionStringExtensionTest
+    public class ConnectionStringTest
     {
         protected readonly string connectionString;
 
-        public ConnectionStringExtensionTest()
+        public ConnectionStringTest()
         {
             connectionString = "Data Source=server-address; initial catalog=database-name; user id=user-id; password=password-secret; Integrated Security=False;";
         }
@@ -16,7 +16,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         [Fact]
         public void Should_Return_Value_Of_Server_From_Connection_String()
         {
-            var server = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Source=");
+            var server = ConnectionString.ExtractValue(connectionString, "Source=");
 
             server.Should().NotBeNullOrEmpty();
             server.Should().Contain("-");
@@ -28,7 +28,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         [Fact]
         public void Should_Return_Value_Of_Database_Name_From_Connection_String()
         {
-            var database = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Catalog=");
+            var database = ConnectionString.ExtractValue(connectionString, "Catalog=");
 
             database.Should().NotBeNullOrEmpty();
             database.Should().Contain("-");
@@ -40,7 +40,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         [Fact]
         public void Should_Return_Value_Of_User_Id_From_Connection_String()
         {
-            var user = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Id=");
+            var user = ConnectionString.ExtractValue(connectionString, "Id=");
 
             user.Should().NotBeNullOrEmpty();
             user.Should().Contain("-");
@@ -52,7 +52,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         [Fact]
         public void Should_Return_Value_Of_Password_From_Connection_String()
         {
-            var password = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Password=");
+            var password = ConnectionString.ExtractValue(connectionString, "Password=");
 
             password.Should().NotBeNullOrEmpty();
             password.Should().Contain("-");
@@ -64,10 +64,10 @@ namespace Utils.Extensions.Test.ConnectionStrings
         [Fact]
         public void Should_Return_Values_Of_Connection_String()
         {
-            var server = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Source=");
-            var database = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Catalog=");
-            var user = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Id=");
-            var password = ConnectionStringExtension.ExtractValueOfConnectionString(connectionString, "Password=");
+            var server = ConnectionString.ExtractValue(connectionString, "Source=");
+            var database = ConnectionString.ExtractValue(connectionString, "Catalog=");
+            var user = ConnectionString.ExtractValue(connectionString, "Id=");
+            var password = ConnectionString.ExtractValue(connectionString, "Password=");
 
             server.Should().NotBeNullOrEmpty();
             server.Should().Contain("-");

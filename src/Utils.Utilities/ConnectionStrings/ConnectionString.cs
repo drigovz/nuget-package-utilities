@@ -1,10 +1,10 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Utils.Extensions.ConnectionStrings
+namespace Utils.Utilities.ConnectionStrings
 {
-    public static class ConnectionStringExtension
+    public static class ConnectionString
     {
-        public static string ExtractValueOfConnectionString(string connectionString, string matchCase)
+        public static string ExtractValue(string connectionString, string matchCase)
         {
             if (string.IsNullOrEmpty(connectionString) || string.IsNullOrEmpty(matchCase))
                 return "";
