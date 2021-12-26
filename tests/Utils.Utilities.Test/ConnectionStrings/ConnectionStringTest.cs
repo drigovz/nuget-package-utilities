@@ -14,6 +14,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
+        [Trait("ConnectionString", "ExtractValue")]
         public void Should_Return_Value_Of_Server_From_Connection_String()
         {
             var server = ConnectionString.ExtractValue(connectionString, "Source=");
@@ -26,6 +27,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
+        [Trait("ConnectionString", "ExtractValue")]
         public void Should_Return_Value_Of_Database_Name_From_Connection_String()
         {
             var database = ConnectionString.ExtractValue(connectionString, "Catalog=");
@@ -38,6 +40,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
+        [Trait("ConnectionString", "ExtractValue")]
         public void Should_Return_Value_Of_User_Id_From_Connection_String()
         {
             var user = ConnectionString.ExtractValue(connectionString, "Id=");
@@ -50,6 +53,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
+        [Trait("ConnectionString", "ExtractValue")]
         public void Should_Return_Value_Of_Password_From_Connection_String()
         {
             var password = ConnectionString.ExtractValue(connectionString, "Password=");
@@ -62,6 +66,7 @@ namespace Utils.Extensions.Test.ConnectionStrings
         }
 
         [Fact]
+        [Trait("ConnectionString", "ExtractValue")]
         public void Should_Return_Values_Of_Connection_String()
         {
             var server = ConnectionString.ExtractValue(connectionString, "Source=");

@@ -9,6 +9,7 @@ namespace Utils.PDF.Test
     public class GeneratePdfTest
     {
         [Fact]
+        [Trait("PDF", "GeneratePdf")]
         public void Should_Return_PDF_File()
         {
             PdfUtilities utils = new();
