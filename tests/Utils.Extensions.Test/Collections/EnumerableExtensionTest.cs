@@ -29,7 +29,7 @@ namespace Utils.Extensions.Test.Collections
         public void Should_False_If_Collection_Not_Is_Empty_And_Not_Null()
         {
             List<char> collection = new() { 'a', 'b', 'c' };
-
+             
             collection.IsNullOrEmpty().Should().BeTrue();
         }
     }
