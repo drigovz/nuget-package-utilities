@@ -1,0 +1,44 @@
+name: Workflow for CI/CD on branch main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    env:
+      PATH_TEST_EXTENSIONS: ./tests/Utils.Extensions.Test/Utils.Extensions.Test.csproj
+      PATH_TEST_PDF: ./tests/Utils.PDF.Test/Utils.PDF.Test.csproj
+      PATH_TEST_UTILITIES: ./tests/Utils.Utilities.Test/Utils.Utilities.Test.csproj
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.1.x', '5.0.x', '6.0.x' ]
+
+    steps:
+      - name: Checkout to main branch
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Check .NET Core version
+        run: dotnet --version
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build application
+        run: dotnet build --configuration Release
+
+      - name: Run tests on Extensions
+        run: dotnet test ${{ env.PATH_TEST_EXTENSIONS }}
+
+      - name: Run tests on PDF
+        run: dotnet test ${{ env.PATH_TEST_PDF }}
+
+      - name: Run tests on Utilities
+        run: dotnet test ${{ env.PATH_TEST_UTILITIES }}
