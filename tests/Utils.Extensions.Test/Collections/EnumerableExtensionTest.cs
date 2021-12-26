@@ -30,7 +30,7 @@ namespace Utils.Extensions.Test.Collections
         {
             List<char> collection = new() { 'a', 'b', 'c' };
 
-            collection.IsNullOrEmpty().Should().BeFalse();
+            collection.IsNullOrEmpty().Should().BeTrue();
         }
     }
 }
